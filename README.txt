@@ -1,3 +1,18 @@
+MATPIGUI Toolbox
+----------------
+
+A GUI toolbox which can be used to create advanced GUIs very easily.
+
+No handles
+No guidata
+Tabs &/or multiple pages
+Work on all versions of Matlab
+Advanced data linking and brushing
+Interactive 2D plotting (simple zooming and panning)
+
+This is a DEMO version which has an expiry built into it.
+
+
 For any questions or comments please contact us on contact@matpi.com
 
 %%%%%%%%%%%%%%%%%%%%%%%%%
