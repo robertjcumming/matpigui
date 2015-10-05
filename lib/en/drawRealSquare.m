@@ -23,4 +23,4 @@
 %
 % Copyright Robert Cumming @ Matpi Ltd.
 % www.matpi.com
-% $Id: drawRealSquare.m 217 2015-07-27 19:10:38Z Bob $
+% $Id: drawRealSquare.m 249 2015-10-05 09:55:34Z robertcumming $

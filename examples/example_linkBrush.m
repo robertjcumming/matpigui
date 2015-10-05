@@ -27,6 +27,7 @@ classdef example_linkBrush < handle
     function obj = example_linkBrush ()
       % Create a figure
       hFig = dialog ( 'position', [100 100 800 600], 'windowStyle', 'normal', 'name', 'Brush & Link Data example - www.matpi.com' );
+      centerfig ( hFig );
       
       % Create a matpigui object -> which will contain pages.
       obj.hTab = matpigui ( hFig, 'buttonHeight', 0 );
@@ -102,18 +103,15 @@ classdef example_linkBrush < handle
       % Add another plot -> data link.  When data updated -> plot is also updated.
       %   In this exampale NO variables are passed in -> in this case they MUST be provided in the X/YDataSource (see plot command above)
       obj.link.addChildLink ( hAvB );
-      
-      % Simulate the data obj being updated (this demonstrates the link data from source -> to plot
-      uiwait ( msgbox ( 'load more data - linking will update the plot' ) );
-      % When user closes message box -> data is reloaded and the plots auto update.
-      obj.randomData ();
-                  
+                        
       % Add brush items to the figure toolbar.
       obj.hBrush.add2ToolBar( hFig );
       
       % allow Ctrl-C to copy the figure to the clipboard.
       obj.hTab.setCopyFigure ( true );
-      centerfig ( hFig );
+      
+      % help
+      msgbox ( sprintf ( 'Left click on the axes, release, move the mouse the left click to selectd data\nLeft click, move mouse then right click to select data using lasso method, continue to right click - left click will finalise\nRight click context menu provides options to modify the data' )  );
     end % Constructor
   end
   methods ( Access=private )

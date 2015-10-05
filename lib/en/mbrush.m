@@ -15,7 +15,7 @@
 %
 %  Copyright Robert Cumming @ Matpi Ltd.
 %  www.matpi.com
-%  $Id: mbrush.m 235 2015-09-15 09:29:06Z robertcumming $
+%  $Id: mbrush.m 242 2015-09-22 07:26:11Z robertcumming $
 classdef mbrush < handle
   properties ( GetAccess=public, SetAccess=public )
     lassoFormat                        % struct containing lasso plot properties
@@ -33,7 +33,7 @@ classdef mbrush < handle
 %     dispOriginal = false;              % display original flag - manual control if not from toolbar
   end
   properties ( GetAccess=public, SetAccess=protected )
-    version = '1.0.0.EE'
+    version = '1.0.0.EH'
     currAx                             % Current axes
     enabled = true;                    % Is brush enabled?
     selectedData                       % Struct containing selected brush data -> used in highlighting other plots

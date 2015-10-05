@@ -39,10 +39,10 @@
 %
 %  Copyright Robert Cumming @ Matpi Ltd.
 %  www.matpi.com
-%  $Id: mguide.m 240 2015-09-18 13:45:11Z robertcumming $
+%  $Id: mguide.m 248 2015-10-05 09:03:19Z robertcumming $
 classdef mguide < handle % hgsetget & handle
   properties (GetAccess=public, SetAccess=protected)
-    version = '1.0.0.EE'
+    version = '1.0.0.EH'
   end
   
   % Public Methods

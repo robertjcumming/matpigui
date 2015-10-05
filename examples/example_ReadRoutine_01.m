@@ -23,6 +23,11 @@
 %  $Id: example_ReadRoutine_01.m 236 2015-09-16 15:28:47Z robertcumming $
 function [output, metaData] = example_ReadRoutine_01( filename, options )
   persistent lastDir                         % see example_ReadRoutine_02 for detailed comments.
+  % capture peopl running this example directly from command line with no input and output arguments
+  if length(dbstack) == 1 && nargin == 0 && nargout == 0
+    example_fileIO
+    return
+  end
   if isempty ( lastDir ); lastDir = pwd; end
   if nargin == 0
     [output, metaData] = GetOptions();

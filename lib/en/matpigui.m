@@ -39,7 +39,7 @@
 %
 % Copyright Robert Cumming @ Matpi Ltd.
 % www.matpi.com
-% $Id: matpigui.m 239 2015-09-18 13:38:08Z Bob $
+% $Id: matpigui.m 248 2015-10-05 09:03:19Z robertcumming $
 classdef matpigui < handle % hgsetget & handle
   properties % public
 %     name
@@ -661,6 +661,11 @@ classdef matpigui < handle % hgsetget & handle
       % 
       %  output = obj.getVersion();
     end
+    function obj = imwrite ( obj, img, filename, varargin )
+      % obj.imwrite ( img );
+      % obj.imwrite ( img, filename );
+      % obj.imwrite ( img, '-clipboard' );
+    end
     function obj = initVideo ( obj, filename )
       % Undocumented
     end
@@ -936,10 +941,14 @@ classdef matpigui < handle % hgsetget & handle
       %           'saveImage'     Adds a icon to save the figure to file
       %           'CopyClipboard' Copies the image to the clipboard (PC only)
       %           'help'          Adds a help toolbar which is linked to the active tab/page help.      
-      %           'zoomin'       Adds a help toolbar which is linked to the active tab/page help.      
+      %           'zoomin'        Adds a help toolbar which is linked to the active tab/page help.      
       %           'zoomout'       Adds a help toolbar which is linked to the active tab/page help.      
       %
-      %           'addCustomToggle' 
+      %   Add your own custom (make sure name doesn't clash with a name above.
+      %           '*custom*' 
+      %            obj.toolbar ( '*custom*', '', 'name', toolbar arg pairs );
+      %     To put it only on a specific page:
+      %            obj.toolbar ( '*custom*', 'pagename', 'name', toolbar arg pairs );
     end
     function obj = toggleUICEnable ( obj, tabName, uicName )
       % Toggle a UIC enable status

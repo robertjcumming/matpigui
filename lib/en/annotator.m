@@ -21,17 +21,20 @@
 %     ANNOTATOR ( hFig );
 %     ANNOTATOR ( hUIPanel );
 %
+%     % For using in a matpigui object.
+%     ANNOTATOR ( hGui.getPageHandle ( 'pageName' ) );
+%
 %     ANNOTATOR()    % will launch a GUI with a uipanel for demo.
 %
 %  This will add buttons to the parent figure toolbar for interative annotation
 %
 %  All objects that are created have uicontext menus for editing
 %
-%  see also mpointer
+%  see also mpointer, matpigui
 %
 %  Copyright Robert Cumming @ Matpi Ltd.
 %  www.matpi.com
-%  $Id: annotator.m 215 2015-07-27 19:00:38Z Bob $
+%  $Id: annotator.m 242 2015-09-22 07:26:11Z robertcumming $
 classdef annotator < mpointer
   properties
     lineColor = [1 0 0];
@@ -48,7 +51,7 @@ classdef annotator < mpointer
     arrow = cell(0);
     userPointer = [];
     dPos = 0.0125
-    version = '1.0.0.EE'
+    version = '1.0.0.EH'
 isStudent = 0
 isDemo = 1
 isDemoUser = 0
@@ -60,7 +63,7 @@ isDeployable = 0
     uic = [];
   end
   methods % constructor & destructor
-    function obj = annotator ( hDraw )
+    function obj = annotator ( hDraw, hAx )
       % obj = annotator()    % launches a demo - adding annotation to a uipanel
       %
       % obj = annotator ( hFig );

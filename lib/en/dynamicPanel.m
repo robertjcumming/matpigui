@@ -35,7 +35,7 @@ classdef dynamicPanel < handle
     traverseTime = 0.5   % how long the dynamic panel will take to traverse
   end
   properties ( SetAccess = private )
-    version = '1.0.0.EE'
+    version = '1.0.0.EH'
   end
   methods % constructor and destructor
     function obj = dynamicPanel( userPanel, hiddenWidth, hidePosition, varargin )

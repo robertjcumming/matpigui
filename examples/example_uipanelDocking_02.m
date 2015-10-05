@@ -47,12 +47,12 @@ function example_uipanelDocking_02
     topPanel = myApp.getPageHandle ( controlNames{ii} );
     bottomPanel = myApp.getPageHandle ( mainUINames{ii} );
     % Set the pixel size.
-    SetMinPixelSize ( topPanel, bottomPanel, 'right', 50 )
+    SetMinPixelSize ( topPanel, bottomPanel, 'right', 50 );
   end
   % add the docking capability
   %   names panels which are docked/undocked
   %   The controlNames -> the uipanel where the dock object will be placed.
-  myApp.uipanelDocking ( names, controlNames, [0 0.95 1 0.05] )
+  myApp.uipanelDocking ( names, controlNames, [0 0.95 1 0.05] );
 end
 function UpdatePlot ( myApp, uiObj )
   % This callback is for the normal panels - but since we have undock capability we need to allow for that.

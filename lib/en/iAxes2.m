@@ -21,7 +21,7 @@ classdef iAxes2 < handle
   end
   
   properties (GetAccess=public, SetAccess=protected)
-    version = '1.0.0.EE'
+    version = '1.0.0.EH'
   end
   
   %------------------------------------------------- Methods
@@ -31,6 +31,8 @@ classdef iAxes2 < handle
     function obj = panAxes ( obj, ax )
     end
     function obj = delete ( obj )
+    end
+    function obj = setLimitClickAction ( obj, button, action )
     end
   end
 end

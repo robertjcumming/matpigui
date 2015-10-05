@@ -1,19 +1,17 @@
 MATPIGUI Toolbox
 ----------------
-
 A GUI toolbox which can be used to create advanced GUIs very easily.
 
-No handles
-No guidata
-Tabs &/or multiple pages
-Work on all versions of Matlab
-Advanced data linking and brushing
-Interactive 2D plotting (simple zooming and panning)
-
-This is a DEMO version which has an expiry built into it.
+  No handles
+  No guidata
+  Tabs &/or multiple pages
+  Work on all versions of Matlab
+  Advanced data linking and brushing
+  Interactive 2D plotting (simple zooming and panning)
 
 
 For any questions or comments please contact us on contact@matpi.com
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%
 %%% INSTALLATION      %%%
@@ -65,6 +63,14 @@ In 2D axes you can left click near the labels to set the min range, right click 
 Double Left click on the axes to bring up a magnifying glass.
 Double Right click on the xes to bring up a annotation GUI.
 
+
+%%%%%%%%%%%%%%%%%
+%%% CPROGRESS %%%
+%%%%%%%%%%%%%%%%%
+A circular progress bar which can be used in a number of different ways.
+There is no explicit example for this - see the help for the function.
+
+
 %%%%%%%%%%%%%%%%%%%%
 %%% DYNAMICPANEL %%%
 %%%%%%%%%%%%%%%%%%%%
@@ -78,27 +84,6 @@ Which shows how to create a dynamicPanel and how to automate some of the feature
 
 It is designed for interactive use - after creating a panel hover the mouse near the edge where the panel is (for 2 seconds) and the panel will appear.
 You can fix it in position using the pin.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% FILE IO Capabilities %%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-The toolbox has the following FILEIO capabilites:
-
-muigetfile - customisable uigetfile dialog (run time customisation of file retrieval + progress bar updates on loading)
-muiputfile - customisable uiputfile dialog (run time customisation of file saving + progress bar updates on loading)
-fastsave   - improved saving of network files*
-fastread   - improved loading of network files*
-
-* PC Only - Network performance is usually slower than reading locally - improvements cannot be guaranteed but in all our testing it is faster for large files.
-
-See details below and example_fileIO
-
-Other examples:
-data = muigetfile ( @example_ReadRoutine_01 )
-data = muigetfile ( @example_ReadRoutine_02 )
-muiputfile ( @example_WriteRoutine_01, rand(10) )
-muiputfile ( @example_WriteRoutine_02, rand(10) )
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%
@@ -114,7 +99,7 @@ example_linkBrush.m
 % hold down control before selecting to multi select.
 % change the page (popupmenu in toolbar) to see brushed data in another page
 
-There are 6 examples of brushing & linking
+There are a number of examples of brushing & linking
 
 The latest release includes:
 
@@ -165,6 +150,28 @@ Store your GUI images into a PDF.  This requires an installation of ghostscript 
 
 See example_gui2pdf.m
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% FILE IO Capabilities %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The toolbox has the following FILEIO capabilites:
+
+muigetfile - customisable uigetfile dialog (run time customisation of file retrieval + progress bar updates on loading)
+muiputfile - customisable uiputfile dialog (run time customisation of file saving + progress bar updates on loading)
+fastsave   - improved saving of network files*
+fastread   - improved loading of network files*
+
+* PC Only - Network performance is usually slower than reading locally - improvements cannot be guaranteed but in all our testing it is faster for large files.
+
+See details below and example_fileIO
+
+Other examples:
+data = muigetfile ( @example_ReadRoutine_01 )
+data = muigetfile ( @example_ReadRoutine_02 )
+muiputfile ( @example_WriteRoutine_01, rand(10) )
+muiputfile ( @example_WriteRoutine_02, rand(10) )
+
+
 %%%%%%%%%%%%%%%
 %%% GENERAL %%%
 %%%%%%%%%%%%%%%
@@ -175,20 +182,13 @@ Please CONTACT US if you would like to see other capability.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%
-%%%    MATPIGUITEST   %%%
+%%% DEMO LIMITATION   %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%
+This is a DEMO version.  Which has the following features
+* On GUI launch occasionally a splashscreen will appear
+* The GUI title will contain acknowledgement that the GUI is build using this toolbox
+* Images saved will contain text header and footer indicating that the GUI was developed using this toolbox
+* Any GUI generated using this toolbox cannot be compiled
 
-For R2013a onwards - UNIT TESTS
-
-In the testing folder there are 3 examples of how you can unit test the GUI.
-
-
-cd to the folder where you unzipped the files and in matlab type:
-
-
-  % to run the case where all unit tests are saved to PDF
-  runtests unitTest_Working_Example_01_AllPDF
-
-  % to run the case where only a dummy failed tests are saved to PDF
-  runtests unitTest_Working_Example_01_PDF
+To remove these restrictions you must purchase a licensed version.
 

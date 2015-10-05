@@ -13,6 +13,6 @@ function example_uipanelDocking
   h = matpigui();
   h.addPage ( 'Primary' );
   names = { 'TopLeft', 'BottomLeft', 'TopRight', 'BottomRight' };
-  h.split ( 'Primary', [2 2], names )
-  uipanelDocking ( h, names, names, [0.95 0.95 0.05 0.05] )
+  h.split ( 'Primary', [2 2], names );
+  uipanelDocking ( h, names, names, [0.95 0.95 0.05 0.05] );
 end

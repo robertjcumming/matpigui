@@ -11,7 +11,7 @@
 %
 %  Copyright Robert Cumming @ Matpi Ltd.
 %  www.matpi.com
-%  $Id: example_linkBrush_Histogram.m 224 2015-09-04 10:31:57Z robertcumming $
+%  $Id: example_linkBrush_Histogram.m 247 2015-10-02 15:08:15Z robertcumming $
 classdef example_linkBrush_Histogram < handle
   properties ( SetAccess = private )
     hTab          % The parent figure
@@ -77,6 +77,7 @@ classdef example_linkBrush_Histogram < handle
       
       % create the brush object
       obj.hBrush = mbrush( ax2 );
+      obj.hBrush.groupHistFormat{1}.FaceColor = [0 1 0];
       % add the plots and Histogramogram
       obj.hBrush.addPlotsToBrush ( Histogram01 );
       obj.hBrush.addHistogramToBrush ( hHistogram, freq );
@@ -84,6 +85,7 @@ classdef example_linkBrush_Histogram < handle
       obj.hBrush.addHistogramToBrush ( hHistogramY, y );
       obj.hBrush.addHistogramToBrush ( hHistogramZ, z );
 
+      obj.hTab.hUIC.Histogram.axes1.XLim = [-50 150];
       % Create a link to a data object.
       obj.link = mlink ( obj.hTab );
       obj.link.addChildLink ( Histogram01, { 'data1.X' 'data1.Y' } ); 

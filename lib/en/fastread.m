@@ -56,7 +56,7 @@ classdef fastread
     localFilename                           % The local file where the copy has been made)
     localCopy = false                       % has a local copy been made?
     filename                                % The variable you should use in your subsequent calls
-    version = '1.0.0.EE'
+    version = '1.0.0.EH'
   end
   methods 
     function obj = fastread ( filename, verbose )

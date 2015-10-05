@@ -16,7 +16,7 @@
 %
 %  Copyright Robert Cumming @ Matpi Ltd.
 %  www.matpi.com
-%  $Id: mpointer.m 237 2015-09-17 16:13:40Z robertcumming $
+%  $Id: mpointer.m 243 2015-09-22 10:08:33Z robertcumming $
 classdef mpointer < handle
   properties ( SetAccess = protected )
     hFig

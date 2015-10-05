@@ -15,7 +15,7 @@
 %
 %  Copyright Robert Cumming @ Matpi Ltd.
 %  www.matpi.com
-%  $Id: example_linkBrush_01.m 219 2015-08-03 07:37:33Z robertcumming $
+%  $Id: example_linkBrush_01.m 249 2015-10-05 09:55:34Z robertcumming $
 classdef example_linkBrush_01 < handle
   properties ( GetAccess = private )
     hTab          % The parent figure
@@ -27,6 +27,7 @@ classdef example_linkBrush_01 < handle
     function obj = example_linkBrush_01 ()
       % Create a figure
       hFig = dialog ( 'position', [100 100 1000 800], 'windowStyle', 'normal', 'name', 'Brush & Link Data example - www.matpi.com' );
+      centerfig(hFig);
       
       % Create a matpigui object -> which will contain pages.
       obj.hTab = matpigui ( hFig, 'buttonHeight', 0 );

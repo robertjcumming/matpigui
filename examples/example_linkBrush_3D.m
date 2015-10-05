@@ -63,7 +63,7 @@ classdef example_linkBrush_3D < handle
       xx = obj.hTab.getData ( 'data2.X' );
       yy = obj.hTab.getData ( 'data2.Y' );
       zz = obj.hTab.getData ( 'data2.Z' );
-      hPlot3d02 = plot3 ( axes3d, xx, yy, zz, 'ro' );
+      hPlot3d02 = plot3 ( axes3d, xx, yy, zz, 'bo' );
       hPlot2d02 = plot ( axes2d01, xx, yy, 'k.' );
       
       % Set the title of the axes.

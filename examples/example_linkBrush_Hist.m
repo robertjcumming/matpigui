@@ -11,7 +11,7 @@
 %
 %  Copyright Robert Cumming @ Matpi Ltd.
 %  www.matpi.com
-%  $Id: example_linkBrush_Hist.m 224 2015-09-04 10:31:57Z robertcumming $
+%  $Id: example_linkBrush_Hist.m 242 2015-09-22 07:26:11Z robertcumming $
 classdef example_linkBrush_Hist < handle
   properties ( SetAccess = private )
     hTab          % The parent figure
@@ -57,7 +57,7 @@ classdef example_linkBrush_Hist < handle
       
       % create a hist plot
       freq = obj.hTab.getData ( 'data1.Freq' );
-      hist ( obj.hTab.hUIC.Hist.axes1, freq );
+      hist ( obj.hTab.hUIC.Hist.axes1, freq, 4 );
       hHist = obj.hTab.hUIC.Hist.axes1.Children(end);
       hHist.FaceColor = [1 1 1];
       title ( obj.hTab.hUIC.Hist.axes1, 'Freq Hist' );

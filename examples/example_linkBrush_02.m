@@ -9,7 +9,7 @@
 %
 %  Copyright Robert Cumming @ Matpi Ltd.
 %  www.matpi.com
-%  $Id: example_linkBrush_02.m 215 2015-07-27 19:00:38Z Bob $
+%  $Id: example_linkBrush_02.m 249 2015-10-05 09:55:34Z robertcumming $
 classdef example_linkBrush_02 < handle
   properties ( GetAccess = private )
     hTab          % The parent figure
@@ -20,8 +20,8 @@ classdef example_linkBrush_02 < handle
   methods % Constructor
     function obj = example_linkBrush_02 ()
       % Create a figure
-      hFig = dialog ( 'position', [200 200 800 600], 'windowStyle', 'normal', 'name', 'Brush & Link Data example - www.matpi.com' );
-      
+      hFig = dialog ( 'position', [200 200 800 600], 'windowStyle', 'normal', 'name', 'Brush & Link Data example - www.matpi.com', 'resize', 'on' );
+      centerfig(hFig);
       obj.hTab = matpigui ( hFig, 'buttonHeight', 0 );
       
       % Create 2 pages where plots will be created
@@ -140,6 +140,9 @@ classdef example_linkBrush_02 < handle
       
       % allow Ctrl-C to copy the figure to the clipboard.
       obj.hTab.setCopyFigure ( true );
+      
+      
+%       axis ( axes1, 'equal' );
     end % Constructor
   end
   methods ( Access=private )
