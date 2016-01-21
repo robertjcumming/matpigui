@@ -32,9 +32,12 @@
 %             double  -> edit box which will return a double (str2double)
 %             char    -> edit box which will return a string
 %             boolean -> check box return true or false
-%             cell    -> a popupmenu where the selected item is returned.
+%             cell    -> a popupmenu where the selected item is returned.*
 %             struct  -> a popupmenu and dependent fields with multiple
 %                          default values (see example below)
+%
+% * If cell array then the last item can be used to highlight what item 
+%     should be selected as the default.
 %
 %  OPTIONS
 % 
@@ -104,16 +107,17 @@
 %  
 %    Use MINPUTDLG and a structure with multiple dependent children:
 %
-% % Create a struct
+% %% Create a struct
 %    for ii=1:3; 
 %      myStruct.(sprintf('item%d',ii)) = struct ( 'number', rand(1), ...
 %                                        'boolean',logical(mod(ii,2)), ...
 %                                        'string', num2str(ii) ); 
 %    end
-%    answer = MINPUTDLG ( {'My Items'}, 'Title', {myStruct} );
+%    [answer, ~, myStruct] = MINPUTDLG ( {'My Items'}, 'Title', {myStruct} );
 %
 %   Produces a struct where the user can select one of the items and modify
 %     it if required before clicking on Ok.
+%     All the items can be access from the 3rd output in this case
 %
 %     see also mlistdlg, mmsgbox, mwarndlg, merrordlg, 
 %              muiwait, matpigui, inputdlg
@@ -127,11 +131,11 @@
 %
 %  Copyright Robert Cumming @ Matpi Ltd.
 %  www.matpi.com
-%  $Id: minputdlg.m 220 2015-08-07 10:48:53Z robertcumming $
+%  $Id: minputdlg.m 263 2015-12-10 10:23:14Z robertcumming $
 
 % TODO: types: checkpop, listbox, checkdouble (checkbox+double value)?
 % TODO: embed inanother matpigui
-function [output, dataBeforeCancel] = minputdlg ( varargin )
+function [output, dataBeforeCancel,arg3] = minputdlg ( varargin )
   persistent mode overrideOutput overrideBeforeCancel
   if isempty ( mode ); mode = 'normal'; overrideOutput = {}; overrideBeforeCancel = {}; end
   if nargin == 0; mode = 'normal'; overrideOutput = {}; overrideBeforeCancel = {}; return; end
@@ -276,11 +280,16 @@ function [output, dataBeforeCancel] = minputdlg ( varargin )
       case 'Value'     % check box logical
         hObj.addUIC ( 'input', num2str(ii), 'checkbox', 'String', questions{ii}, 'Position', pos, 'Value', answers{ii} );
       case 'selectedString'     % popup menu containing strings
+        value = 1;
+        if length ( answers{ii} ) ~= length ( unique ( answers{ii} ) ) % assumption that the last item in the popup menu it the item to be selected from the list
+          value = find ( strcmp ( answers{ii}(1:end-1), answers{ii}(end)) == 1 );
+          answers{ii}(end) = [];
+        end
         if dynamicCallback && ii == 1
           userStruct.types = types;          
-          hObj.addUIC ( 'input', num2str(ii), 'popupmenu', 'String', answers{ii}, 'title', questions{ii}, 'Position', pos, 'uicTitlePosition', tPos, 'Max', options.numLines(ii), 'Callback', {@UpdateItems hObj userStruct} );
+          hObj.addUIC ( 'input', num2str(ii), 'popupmenu', 'String', answers{ii}, 'title', questions{ii}, 'Position', pos, 'uicTitlePosition', tPos, 'Max', options.numLines(ii), 'Callback', {@UpdateItems hObj userStruct}, 'Value', value );
         else
-          hObj.addUIC ( 'input', num2str(ii), 'popupmenu', 'String', answers{ii}, 'title', questions{ii}, 'Position', pos, 'uicTitlePosition', tPos, 'Max', options.numLines(ii) );
+          hObj.addUIC ( 'input', num2str(ii), 'popupmenu', 'String', answers{ii}, 'title', questions{ii}, 'Position', pos, 'uicTitlePosition', tPos, 'Max', options.numLines(ii), 'Value', value );
         end
       case 'checkedit' % a checkbox next to a edit box.
         switch class ( answers{ii} )
@@ -365,9 +374,19 @@ function [output, dataBeforeCancel] = minputdlg ( varargin )
   muiwait ( ancestor ( hObj.hFig, 'figure' ) );
   
   % wait for dialog to close and then process and deliver the output.
+  arg3 = [];
   if ishandle ( hObj.hFig )
     output = BuildOutput ( hObj, types, nQuest );
     dataBeforeCancel = output;
+    if dynamicCallback
+      %% for when a struct is passed in
+      UpdateItems ( hObj, userStruct )
+      fnames = fieldnames ( hObj.hUIC.input.F_1.UserData.userStruct.data );
+      for ii=1:length(fnames)
+        arg3.(fnames{ii}) = hObj.hUIC.input.F_1.UserData.userStruct.data.(fnames{ii}).value;
+      end
+    end
+      
     hObj.close();
   else
     output = [];
@@ -481,17 +500,34 @@ function [types, pixels, options] = ExtractTypes ( nAnswers, answers, options )
 end
 function UpdateItems ( hObj, userStruct )
   popValue = hObj.get ( 'input', '1', 'selectedString' );
+  if isempty ( hObj.hUIC.input.F_1.UserData ) % the last selection
+    lastIndex = 1;
+    
+    hObj.hUIC.input.F_1.UserData.userStruct = userStruct;
+  else
+    lastIndex = hObj.hUIC.input.F_1.UserData.lastIndex;
+    userStruct = hObj.hUIC.input.F_1.UserData.userStruct;
+  end
+  
+  
+  hObj.hUIC.input.F_1.UserData.lastIndex = popValue;
   for ii=2:length(userStruct.types)
     switch userStruct.types{ii}
       case 'Value'
+        value = hObj.get ( 'input', num2str(ii), 'String' );
         hObj.set ( 'input', num2str(ii), 'Value', userStruct.data.(popValue).(userStruct.fields{ii-1}) );
       case 'String'
+        value = hObj.get ( 'input', num2str(ii), 'String' );
         hObj.set ( 'input', num2str(ii), 'String', userStruct.data.(popValue).(userStruct.fields{ii-1}) );
       case 'str2double'
+        value = hObj.get ( 'input', num2str(ii), 'str2double' );
         hObj.set ( 'input', num2str(ii), 'String', num2str(userStruct.data.(popValue).(userStruct.fields{ii-1})) );
       case 'selectedString'
+        value = hObj.get ( 'input', num2str(ii), 'selectedString' );
         hObj.set ( 'input', num2str(ii), 'String', userStruct.data.(popValue).(userStruct.fields{ii-1}) );
     end
+    str = hObj.get ( 'input', '1', 'String' );
+    hObj.hUIC.input.F_1.UserData.userStruct.data.(str{lastIndex}).(userStruct.fields{ii-1}) = value;
   end
-  
+  hObj.hUIC.input.F_1.UserData.lastIndex = hObj.get ( 'input', '1', 'Value' );
 end

@@ -39,7 +39,7 @@
 %
 % Copyright Robert Cumming @ Matpi Ltd.
 % www.matpi.com
-% $Id: matpigui.m 262 2015-11-20 11:34:37Z robertcumming $
+% $Id: matpigui.m 263 2015-12-10 10:23:14Z robertcumming $
 classdef matpigui < handle % hgsetget & handle
   properties % public
 %     name

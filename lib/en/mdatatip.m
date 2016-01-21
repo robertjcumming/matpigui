@@ -18,7 +18,7 @@
 %
 %   Author:    Robert Cumming
 %   Copyright: Matpi Ltd.
-%   $Id: mdatatip.m 260 2015-11-16 07:24:34Z robertcumming $
+%   $Id: mdatatip.m 263 2015-12-10 10:23:14Z robertcumming $
 %
 classdef mdatatip < mpointer
   properties

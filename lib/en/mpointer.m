@@ -16,7 +16,7 @@
 %
 %  Copyright Robert Cumming @ Matpi Ltd.
 %  www.matpi.com
-%  $Id: mpointer.m 261 2015-11-18 08:14:14Z robertcumming $
+%  $Id: mpointer.m 263 2015-12-10 10:23:14Z robertcumming $
 classdef mpointer < handle
   properties 
     fill = false;
@@ -58,6 +58,8 @@ classdef mpointer < handle
       %     'dragTextRightDown' 'dragTextLeftUp'
       %     'dragArrowPoint'
       %     'dragArrowBase'      
+    end
+    function obj = changeUser ( obj, mode )
     end
     function obj = resetPointer ( obj )
     end
