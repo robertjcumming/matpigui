@@ -15,7 +15,7 @@
 %
 %  Copyright Robert Cumming @ Matpi Ltd.
 %  www.matpi.com
-%  $Id: mbrush.m 242 2015-09-22 07:26:11Z robertcumming $
+%  $Id: mbrush.m 262 2015-11-20 11:34:37Z robertcumming $
 classdef mbrush < handle
   properties ( GetAccess=public, SetAccess=public )
     lassoFormat                        % struct containing lasso plot properties
@@ -30,10 +30,11 @@ classdef mbrush < handle
     incRotate3D = false;               % include a 3D rotate option in the toolbar
     multiSelect = false;               % is the default to multi select point (i.e. control held by default)
     incOriginalSelectionInToolbar = false; %Include the original selection in the toolbar?
+    copyToClipboardCallback = [];        % A user callback to format the data prior to clpying to clipboard
 %     dispOriginal = false;              % display original flag - manual control if not from toolbar
   end
   properties ( GetAccess=public, SetAccess=protected )
-    version = '1.0.0.EH'
+    version = '1.0.0.EN'
     currAx                             % Current axes
     enabled = true;                    % Is brush enabled?
     selectedData                       % Struct containing selected brush data -> used in highlighting other plots

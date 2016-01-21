@@ -16,8 +16,11 @@
 %
 %  Copyright Robert Cumming @ Matpi Ltd.
 %  www.matpi.com
-%  $Id: mpointer.m 243 2015-09-22 10:08:33Z robertcumming $
+%  $Id: mpointer.m 261 2015-11-18 08:14:14Z robertcumming $
 classdef mpointer < handle
+  properties 
+    fill = false;
+  end
   properties ( SetAccess = protected )
     hFig
   end
@@ -32,6 +35,13 @@ classdef mpointer < handle
     end
   end
   methods
+    function obj = setSpecial ( obj, mode )
+      % obj.setSpecial ( mode )
+      %
+      %  set the mode but do not update the internal userPointer info
+      % to reset use:
+      %   obj.setSpecial ( 'user' );
+    end
     function obj = setPointer ( obj, mode, force )
       % obj.setPointer ( mode );
       % obj.setPointer ( mode, force )

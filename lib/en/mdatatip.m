@@ -18,7 +18,7 @@
 %
 %   Author:    Robert Cumming
 %   Copyright: Matpi Ltd.
-%   $Id: mdatatip.m 231 2015-09-13 19:10:54Z robertcumming $
+%   $Id: mdatatip.m 260 2015-11-16 07:24:34Z robertcumming $
 %
 classdef mdatatip < mpointer
   properties
@@ -44,6 +44,19 @@ classdef mdatatip < mpointer
       %             
     end
     function obj = delete ( obj )
+      % Delete the object
+      % obj.delete()
+    end
+    function obj = cleanUp ( obj )
+      % Force a clean up of the datatip
+      % obj.cleanUp()
+    end
+    function obj = addLink ( obj, varargin )
+      % Add a clickable link to the botton of your datatip
+      %
+      % obj.addLink ( @(obj,event)yourFunction ( yourArgs ) );
+      % obj.addLink ( 'link Txt', @(obj,event)yourFunction ( yourArgs ) );
+      %
     end
   end
   methods % Public

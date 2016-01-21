@@ -51,7 +51,7 @@ classdef annotator < mpointer
     arrow = cell(0);
     userPointer = [];
     dPos = 0.0125
-    version = '1.0.0.EH'
+    version = '1.0.0.EN'
 isStudent = 0
 isDemo = 1
 isDemoUser = 0

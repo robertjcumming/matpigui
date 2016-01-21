@@ -31,7 +31,7 @@ classdef gui2pdf < handle
   end
   
   properties (SetAccess = private )
-    version = '1.0.0.EH'
+    version = '1.0.0.EN'
     otherText = cell(0);            % other text items can be added here
   end
   

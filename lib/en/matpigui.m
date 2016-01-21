@@ -39,7 +39,7 @@
 %
 % Copyright Robert Cumming @ Matpi Ltd.
 % www.matpi.com
-% $Id: matpigui.m 248 2015-10-05 09:03:19Z robertcumming $
+% $Id: matpigui.m 262 2015-11-20 11:34:37Z robertcumming $
 classdef matpigui < handle % hgsetget & handle
   properties % public
 %     name
@@ -92,7 +92,11 @@ classdef matpigui < handle % hgsetget & handle
     dock                   % A uipanel is being docked
                            %    Event contains docked panel name(s)
     tabDelete              % Event notification for when a tab is deleted.
+    settings_buildUIC      % When the settings are changed -> and the UIC are built this event is triggered.
+    
+    userEvent              % An event that the user can create 
   end
+  
   
   % Public Methods
   %   some methods have to be public to allow for the embedded child tab groups - this is not ideal.
@@ -309,6 +313,7 @@ classdef matpigui < handle % hgsetget & handle
       %                                     uibuttongroup
       %                                     uipanel
       %                                     uitable
+      %                                     pushpop     % special case of popupmenu + pushbutton
       %
       %   varargin - valid arg pairs for the uicontrol requested, See matlab help for valid inputs.
       %
@@ -503,10 +508,11 @@ classdef matpigui < handle % hgsetget & handle
       %
       % parentName - name of the tab/page/uisplit/uipanel where split is located
     end
-    function obj = disableFigure ( obj )
+    function obj = disableFigure ( obj, flag )
       % Disable the GUI (pointer only);
       %
       % obj.disableFigure()
+      % obj.disableFigure( changePointerFlag );  % logical flag to change pointer.
       %
       % Disable the figure (currently only the mouse pointer is made busy).
     end

@@ -20,7 +20,7 @@
 %
 %  Copyright Robert Cumming @ Matpi Ltd.
 %  www.matpi.com
-%  $Id: example_ReadRoutine_01.m 236 2015-09-16 15:28:47Z robertcumming $
+%  $Id: example_ReadRoutine_01.m 250 2015-10-05 19:57:02Z Bob $
 function [output, metaData] = example_ReadRoutine_01( filename, options )
   persistent lastDir                         % see example_ReadRoutine_02 for detailed comments.
   % capture peopl running this example directly from command line with no input and output arguments

@@ -15,7 +15,7 @@
 %
 % Copyright Robert Cumming @ Matpi Ltd.
 % www.matpi.com
-% $Id: example_linkBrush.m 215 2015-07-27 19:00:38Z Bob $
+% $Id: example_linkBrush.m 250 2015-10-05 19:57:02Z Bob $
 classdef example_linkBrush < handle
   properties ( GetAccess = private )
     hTab          % The parent figure

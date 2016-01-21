@@ -42,7 +42,7 @@
 classdef fastsave
   properties ( SetAccess = private )
     filename                                % The name of the target file to save
-    version = '1.0.0.EH'
+    version = '1.0.0.EN'
   end
   methods
     function obj = fastsave ( filename )

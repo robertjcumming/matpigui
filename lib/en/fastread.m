@@ -49,14 +49,14 @@
 %
 %  Author:    Robert Cumming
 %  Copyright: Matpi Ltd.
-%  $Id: fastread.m 215 2015-07-27 19:00:38Z Bob $
+%  $Id: fastread.m 251 2015-10-16 12:51:44Z robertcumming $
 classdef fastread
   properties ( SetAccess = private )
     sourceFilename                          % File provided by the user (i.e. the network file)
     localFilename                           % The local file where the copy has been made)
     localCopy = false                       % has a local copy been made?
     filename                                % The variable you should use in your subsequent calls
-    version = '1.0.0.EH'
+    version = '1.0.0.EN'
   end
   methods 
     function obj = fastread ( filename, verbose )

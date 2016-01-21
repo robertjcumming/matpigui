@@ -34,7 +34,7 @@ classdef iAxes < handle
   end
   
   properties (GetAccess=public, SetAccess=protected)
-    version = '1.0.0.EH'
+    version = '1.0.0.EN'
   end
   
   %------------------------------------------------- Methods

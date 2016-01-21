@@ -10,7 +10,7 @@
 %                 - or 'busy' -> this indicates a unknown process length
 %      updateText - update the user controlled text string.
 %      optArg     - see valid options below
-%      argValue      - the value
+%      argValue   - the value
 %
 %      % Valid optArgs to cusomise the GUI:
 %         options.innerBar   = false;         % inc inner bar true | false
@@ -79,7 +79,7 @@
 %   --------------
 %    f = figure; 
 %    uip = uipanel ( 'parent', f, 'position', [0.2 0.2 0.4 0.4] );
-%    h = cProgress ( 0, 'Embedded', 'parent', uip )
+%    h = cProgress ( 0, 'Embedded', 'parent', uip, 'outerColor', [0 0 1] )
 %    for i=1:100
 %      % Your code goes here...
 %      cProgress ( i, h )
@@ -92,14 +92,14 @@
 %
 %   1. If the dialog is closed before your calling loop is finished it 
 %      will continue to run (but not display)
-%   2. Dont make to many calls to this function -> it can slow down
+%   2. Dont make too many calls to this function -> it can slow down
 %      the over all progess of your code.
 %   3. You can embed the progress bar into your own GUI by creating
-%      a new panel for the bar to be drawn on.
+%      a new panel for the bar to be displayed in.
 %   4. For a busy progress bar -> the user must indicate when it is to 
 %      be updated - you can initiate this via a timer if you desire
 %
 %
 %  see also waitbar
 %
-% $Id: cProgress.m 227 2015-09-04 13:39:45Z Bob $
+% $Id: cProgress.m 250 2015-10-05 19:57:02Z Bob $

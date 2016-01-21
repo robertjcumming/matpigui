@@ -9,7 +9,7 @@
 %
 %  Copyright Robert Cumming @ Matpi Ltd.
 %  www.matpi.com
-%  $Id: mlink.m 225 2015-09-04 13:00:40Z robertcumming $
+%  $Id: mlink.m 259 2015-11-15 21:12:57Z Bob $
 classdef mlink < handle
   properties 
     dimCheck = true % flag to perform dimension check before updating plots

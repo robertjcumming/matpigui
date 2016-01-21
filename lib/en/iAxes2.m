@@ -18,17 +18,24 @@ classdef iAxes2 < handle
     zoomNLabel = 3;         % max number of lines (x and y) which will be labeled - requires zoomLabel and zoomGridLines to be true.
     pixelOffset = 18;       % number of pixels offset from axes for callacks to act upon.
     magBorderColor = [0 0 0]; % magnfified image colour.
+    active = true;
   end
   
   properties (GetAccess=public, SetAccess=protected)
-    version = '1.0.0.EH'
+    version = '1.0.0.EN'
   end
   
   %------------------------------------------------- Methods
   methods  % Constructor
     function obj = iAxes2 ( varargin )
     end
-    function obj = panAxes ( obj, ax )
+    function obj = panAxes ( obj, ax, varargin )
+      % obj.panAxes ( ); % pan axes already registered
+      % obj.panAxes ( [], panXflag, panYflag); % pan axes already registered
+      % obj.panAxes ( ax );
+      % obj.panAxes ( ax, panX, panY );
+    end
+    function obj = zoomAxes ( obj, ax, varargin )
     end
     function obj = delete ( obj )
     end

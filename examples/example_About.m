@@ -3,7 +3,7 @@
 %
 %  Copyright Robert Cumming @ Matpi Ltd.
 %  www.matpi.com
-%  $Id: example_About.m 215 2015-07-27 19:00:38Z Bob $
+%  $Id: example_About.m 250 2015-10-05 19:57:02Z Bob $
 function example_About
   %%  Option 1
   h = matpigui();
